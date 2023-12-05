@@ -16,7 +16,7 @@ const Allsongs = () => {
             <ul>
                 {songs.map((s: Song) => {
                     return (
-                        <li>{`${s.Title}, ${s.Artist}, ${s.Price}, ${s.File}`}</li>
+                        <li key={s.ID}>{`${s.Title}, ${s.Artist}, ${s.Price}`}</li>
                     );
                 })}
             </ul>

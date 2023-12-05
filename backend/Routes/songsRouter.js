@@ -5,7 +5,9 @@ const Song = require("../models/song");
 // Ruta para obtener todas las canciones
 router.get("/songs", async (req, res) => {
     try {
-        const songs = await Song.findAll();
+        const songs = await Song.findAll({
+            attributes: { exclude: ['File'] }, // Excluir el campo 'File'
+          });
         res.json(songs);
     } catch (error) {
         console.error("Error al obtener canciones:", error);
@@ -13,15 +15,16 @@ router.get("/songs", async (req, res) => {
     }
 });
 
-router.get("/songs/:id", async (req, res) => {
-    try {
-        const { id } = req.params
-        const song = await Song.findByPk(id)
-        res.json(song)
-    } catch (error) {
-        console.log(error)
-    }
-})
+    router.get("/songs/:id", async (req, res) => {
+        try {
+            const { id } = req.params
+            const song = await Song.findByPk(id)
+            const songDataWithoutFile = song.get({ plain: true, attributes: { exclude: ['File'] } });
+            res.json(songDataWithoutFile)
+        } catch (error) {
+            console.log(error)
+        }
+    })
 
 // Crear una nueva canción
 router.post("/songs",async (req, res) => {

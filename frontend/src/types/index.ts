@@ -9,7 +9,6 @@ export type Song = {
     Artist: string;
     Price: string;
     Image: string;
-    File: string;
     Listening: string;
     createdAt: string;
     updatedAt: string;
@@ -35,3 +34,15 @@ export type Preference = {
     user: User,
     items: Song[];
 };
+
+export type Purchase ={
+    ID: number,
+    PurchaseDate: string,
+    TotalPrice: number,
+    State: string,
+    createdAt: string,
+    updatedAt: string,
+    UserID: number,
+    Songs: Song[]
+    User: User
+}

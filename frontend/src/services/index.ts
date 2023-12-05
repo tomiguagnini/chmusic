@@ -16,3 +16,7 @@ export const getSong = async function (id:string|undefined) {
 export const createPreference = async function(data:Preference) {
     return await axios.post('/create_preference',data)
 }
+
+export const getPurchases = async function(){
+    return await axios.get('/purchase')
+}

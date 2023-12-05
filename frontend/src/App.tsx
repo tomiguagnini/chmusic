@@ -6,6 +6,7 @@ import RootLayout from "./_root/RootLayout";
 import Home from "./_root/pages/Home";
 import SongDetail from "./_root/pages/SongDetail";
 import Checkout from "./_root/pages/Checkout";
+import AllPurchases from "./_admin/pages/Purchases";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/admin/' element={<AdminLayout />}>
                 <Route index element={<Allsongs />} />
                 <Route path="upload-songs" element={<UploadSongs />} />
+                <Route path="all-purchases" element={<AllPurchases />} />
             </Route>
         </Routes>
     );

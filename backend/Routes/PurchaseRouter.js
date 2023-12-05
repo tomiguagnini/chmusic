@@ -135,7 +135,10 @@ const createPurchase = async (data) => {
 router.get("/purchase", async (req, res) => {
     try {
         const purchases = await Purchase.findAll({
-            include: [{ model: Song }, { model: User }],
+            include: [
+                { model: Song, attributes: { exclude: ['File'] } },
+                { model: User, attributes: { exclude: ['password'] } }
+            ],
             order: [['createdAt', 'DESC']],
         });
         res.json(purchases);

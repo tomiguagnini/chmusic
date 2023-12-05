@@ -9,4 +9,9 @@ export const sidebarLinks = [
       route: "/admin/upload-songs",
       label: "Upload song",
     },
+    {
+      imgURL: "/assets/music-note-2.svg",
+      route: "/admin/all-purchases",
+      label: "Purchases",
+    },
   ];
