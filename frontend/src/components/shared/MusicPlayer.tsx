@@ -13,7 +13,6 @@ function MusicPlayer() {
         Artist: "",
         Price: "",
         Image: "",
-        File: "",
         Listening: "",
         createdAt: "",
         updatedAt: "",
