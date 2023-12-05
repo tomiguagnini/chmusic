@@ -1,0 +1,27 @@
+import { useEffect, useState } from "react";
+import { Song } from "../../types";
+import { getSongs } from "../../services";
+
+const Allsongs = () => {
+    const [songs, setSongs] = useState<Array<Song>>([]);
+    useEffect(() => {
+        getSongs().then((r) => setSongs(r.data));
+    }, []);
+
+    return (
+        <div className="common-container">
+            <h1 className=" text-3xl">Allsongs</h1>
+
+            <br></br>
+            <ul>
+                {songs.map((s: Song) => {
+                    return (
+                        <li>{`${s.Title}, ${s.Artist}, ${s.Price}, ${s.File}`}</li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
+};
+
+export default Allsongs;
