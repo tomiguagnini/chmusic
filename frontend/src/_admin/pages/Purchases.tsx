@@ -5,7 +5,9 @@ import { getPurchases } from "../../services";
 const AllPurchases = () => {
     const [purchases, setPurchases] = useState<Array<Purchase>>([]);
     useEffect(() => {
-        getPurchases().then((r) => setPurchases(r.data));
+        getPurchases()
+        .then((r) => setPurchases(r.data))
+        .catch((error)=> console.log(error))
     }, []);
 
     return (

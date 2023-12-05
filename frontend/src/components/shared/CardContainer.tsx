@@ -8,7 +8,9 @@ import { useState, useEffect } from 'react'
 function CardContainer() {
     const [songs, setSongs] = useState<Array<Song>>([]);
     useEffect(() => {
-        getSongs().then((r) => setSongs(r.data));
+        getSongs()
+        .then((r) => setSongs(r.data))
+        .catch((error)=> console.log(error))
     }, []);
   return (
     <div className="flex gap-15 flex-wrap justify-center w-full">

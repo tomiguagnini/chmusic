@@ -5,7 +5,9 @@ import { getSongs } from "../../services";
 const Allsongs = () => {
     const [songs, setSongs] = useState<Array<Song>>([]);
     useEffect(() => {
-        getSongs().then((r) => setSongs(r.data));
+        getSongs()
+        .then((r) => setSongs(r.data))
+        .catch((error)=> console.log(error))
     }, []);
 
     return (
