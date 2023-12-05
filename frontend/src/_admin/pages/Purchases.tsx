@@ -16,7 +16,7 @@ const AllPurchases = () => {
 
             <br></br>
             <ul>
-                {purchases.map((p) => {
+                {purchases?.map((p) => {
                     return (
                         <li key={p.ID}>{`${p.Songs[0].Title}, ${p.TotalPrice}, ${p.User?.Email}`}</li>
                     );
