@@ -22,15 +22,16 @@ router.post("/create_preference", async (req, res) => {
             currency_id: "ARS",
         };
     });
+    console.log(req.body.user);
     const user = await createUser(req.body.user);
-
+    console.log(user);
     let preference = {
         items,
         payer: {
             email: user.Email,
         },
-        metadata:{
-            user:user
+        metadata: {
+            user: user,
         },
         notification_url: app_host + "/webhook",
         back_urls: {
@@ -62,10 +63,11 @@ router.get("/user_mp", function (req, res) {
     //     Status: req.query.status,
     //     MerchantOrder: req.query.merchant_order_id,
     // });
-    console.log(req.body.email)
-    mercadopago.customers.search({ options: { email: req.body.email } })
-    .then((r)=>res.json(r))
-    .catch(console.log);
+    console.log(req.body.email);
+    mercadopago.customers
+        .search({ options: { email: req.body.email } })
+        .then((r) => res.json(r))
+        .catch(console.log);
 });
 
 router.post("/webhook", async (req, res) => {
@@ -85,16 +87,16 @@ router.post("/webhook", async (req, res) => {
 
 router.post("/purchase", async (req, res) => {
     //Recive en el body: user, items, state
-    createPurchase(req.body);
+    //createPurchase(req.body);
     res.sendStatus(200);
 });
+
 const createPurchase = async (data) => {
     try {
         const State = data.body.status;
         const items = data.body.additional_info.items;
         const payer = data.body.payer;
-        const reqUser = data.body.metadata.user
-        console.log(State);
+        const reqUser = data.body.metadata.user;
         const TotalPrice = items.reduce(
             (total, item) => total + Number(item.unit_price),
             0
@@ -111,15 +113,17 @@ const createPurchase = async (data) => {
         });
 
         const user = await createUser({
-            FirstName: reqUser.FirstName || payer.first_name,
-            LastName: reqUser.LastName || payer.last_name,
-            Email: reqUser.Email || payer.email,
-            Phone: reqUser.Phone ||
+            FirstName: reqUser.first_name || payer.first_name,
+            LastName: reqUser.last_name || payer.last_name,
+            Email: reqUser.email || payer.email,
+            Phone:
+                reqUser.phone ||
                 payer.phone.extension +
-                payer.phone.area_code +
-                payer.phone.number,
+                    payer.phone.area_code +
+                    payer.phone.number,
+            Dni: reqUser.dni,
         });
-        
+
         await purchase.setUser(user);
 
         return purchase;
@@ -132,6 +136,7 @@ router.get("/purchase", async (req, res) => {
     try {
         const purchases = await Purchase.findAll({
             include: [{ model: Song }, { model: User }],
+            order: [['createdAt', 'DESC']],
         });
         res.json(purchases);
     } catch (error) {
