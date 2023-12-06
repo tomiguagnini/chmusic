@@ -6,7 +6,18 @@ import { useState, useEffect } from 'react'
 
 
 function CardContainer() {
-    const [songs, setSongs] = useState<Array<Song>>([]);
+    const [songs, setSongs] = useState<Array<Song>>([
+      {
+        ID:0,
+        Title:'secuen',
+        Artist:'ch',
+        Price:'100',
+        Image:'/assets/imagen0.jpeg',
+        Listening:'/assets/algo.mp3',
+        createdAt:'asd',
+        updatedAt:'asd'
+      }
+    ]);
     useEffect(() => {
         getSongs()
         .then((r) => setSongs(r.data))
