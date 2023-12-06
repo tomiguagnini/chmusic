@@ -47,7 +47,7 @@ function CardShop({ song }: CardShopProps) {
                     ) : (
                         <Button
                             onClick={() => removeToCart(song)}
-                            className="bg-primary-500 hover:scale-[1.05] hover:bg-primary-600"
+                            className="bg-red hover:scale-[1.05] hover:bg-red-600"
                         >
                             <Trash2 />
                         </Button>

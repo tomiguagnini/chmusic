@@ -6,7 +6,7 @@ const RootLayout = () => {
     return (
         <CartProvider>
             <Header />
-            <div className="flex flex-1 h-full justify-center mt-16">
+            <div className="flex-col h-full justify-center mt-16">
                 <Outlet />
             </div>
         </CartProvider>

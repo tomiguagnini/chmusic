@@ -19,7 +19,6 @@ import { convertFilesToUrl } from "@/lib/utils";
 import { useState } from "react";
 import Spinner from "../shared/Spinner";
 
-
 const CreateSong = () => {
     const [loading, setLoading] = useState(false);
 
@@ -49,8 +48,9 @@ const CreateSong = () => {
         }
     }
     return (
-        <>  
-            {loading ? <Spinner/> : ""}
+        <>
+            
+            {loading ? <Spinner /> : ""}
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -105,6 +105,7 @@ const CreateSong = () => {
                                 <FormControl>
                                     <Input
                                         type="number"
+                                        min='0'
                                         className="shad-input"
                                         {...field}
                                     />
@@ -182,10 +183,11 @@ const CreateSong = () => {
                             </FormItem>
                         )}
                     />
-
-                    <Button type="submit" className=" bg-primary-500">
-                        Submit
-                    </Button>
+                    <div className="flex justify-end">
+                        <Button type="submit" className="bg-primary-500 mt-2 hover:bg-primary-600" size={'lg'}>
+                            Cargar
+                        </Button>
+                    </div>
                 </form>
             </Form>
         </>

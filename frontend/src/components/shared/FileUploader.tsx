@@ -16,7 +16,7 @@ function FileUploader({fieldChange}: FileUploaderProps) {
     fieldChange(acceptedFiles)
     setFileUrl(convertFileToUrl(acceptedFiles[0]))
     console.log(acceptedFiles)
-  }, [file])
+  }, [fieldChange])
 
   const {getRootProps, getInputProps,} = useDropzone({
     onDrop,
@@ -41,7 +41,7 @@ function FileUploader({fieldChange}: FileUploaderProps) {
           <div className='file_uploader-box'>
             <h3>Drag file here</h3>
             <br></br>
-            <div className='shad-button_dark_4 rounded items-baseline'>
+            <div className='shad-button_dark_4 rounded-xl items-center'>
               Select from your computer
             </div>
           </div>

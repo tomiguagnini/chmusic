@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react";
-import { Purchase } from "../../types";
-import { getPurchases } from "../../services";
+import Payments from "@/components/shared/Payments";
 
 const AllPurchases = () => {
-    const [purchases, setPurchases] = useState<Array<Purchase>>([]);
-    useEffect(() => {
-        getPurchases()
-        .then((r) => setPurchases(r.data))
-        .catch((error)=> console.log(error))
-    }, []);
-
     return (
-        <div className="common-container">
-            <h1 className=" text-3xl">AllPurchases</h1>
-
-            <br></br>
-            <ul>
-                {purchases?.map((p) => {
-                    return (
-                        <li key={p.ID}>{`${p.Songs[0].Title}, ${p.TotalPrice}, ${p.User?.Email}`}</li>
-                    );
-                })}
-            </ul>
-        </div>
+        <>
+            <div className="common-container h-screen">
+            <h1 className="text-4xl my-5 font-bold">Ordenes de compra</h1>
+                <Payments />
+            </div>
+        </>
     );
 };
 

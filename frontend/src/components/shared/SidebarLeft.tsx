@@ -1,13 +1,24 @@
 import { sidebarLinks } from "../../constants";
 import { INavLink } from "../../types";
 import { useLocation, NavLink, Link } from "react-router-dom";
+import logo from "@/assets/image0.jpeg";
 
 const SidebarLeft = () => {
     const { pathname } = useLocation();
     return (
         <nav className="leftsidebar">
             <div className="flex flex-col gap-11 h-screen">
-                <Link to='/' className="p-4 text-2xl">CH Music</Link>
+                <div className="flex items-center">
+                    <img
+                        src={logo}
+                        height={70}
+                        width={70}
+                        className="rounded-full"
+                    />
+                    <Link to="/" className="p-4 text-3xl">
+                        CH Beats
+                    </Link>
+                </div>
                 <ul className="flex flex-col gap-4">
                     {sidebarLinks.map((link: INavLink) => {
                         const isActive = pathname === link.route;

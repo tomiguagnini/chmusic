@@ -28,7 +28,7 @@ function MusicPlayer() {
 
     return (
         <>
-            <div className="sm:w-3/5 h-screen w-full m-4 mt-16">
+            <div className="sm:w-3/5 h-screen w-full m-4">
                 <div className="flex justify-center h-4/5 pb-1 ">
                     <img
                         src={song?.Image}

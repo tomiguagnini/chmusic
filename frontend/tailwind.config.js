@@ -18,11 +18,12 @@ export default {
       },
       extend: {
         colors: {
-          'primary-500': '#877EFF',
-          'primary-600': '#5D5FEF',
+          'primary-500': 'rgb(29 78 216)',
+          'primary-600': 'rgb(30 64 175)',
           'secondary-500': '#FFB620',
           'off-white': '#D0DFFF',
-          'red': '#FF5A5A',
+          'red': '#b82c2c',
+          'red-600': '#911c1c',
           'dark-1': '#000000',
           'dark-2': '#09090A',
           'dark-3': '#101012',
