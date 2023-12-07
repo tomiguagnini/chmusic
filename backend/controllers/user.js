@@ -11,5 +11,32 @@ const createUser = async(data)=>{
     }
 }
 
+const create_user = async (req, res) => {
+    try {
+        const user = await createUser(req.body);
+        res.json(user);
+    } catch (error) {
+        console.log(error);
+        res.json(error);
+    }
+}
 
-module.exports = {createUser}
+const get_user = async (req,res)=>{
+    try {
+        const email = req.body.email
+        if (!email){
+            throw new Error('not found email in body')
+        }
+        const user = await User.findOne({where:{Email:email}})
+        res.json(user)
+    } catch (error) {
+        res.json(error)
+    }
+}
+
+
+module.exports = {
+    createUser,
+    create_user,
+    get_user
+}
