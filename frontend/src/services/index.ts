@@ -1,8 +1,9 @@
 import axios from '../lib/axios'
-import { Preference, SimpleSong} from '@/types';
+import { Login, Preference, SimpleSong} from '@/types';
 
 export const getSongs = async function(){
-    return await axios.get('/songs')
+    const token = localStorage.getItem('token')
+    return await axios.get('/songs',{headers:{'Authorization': token}})
 }
 
 export const createSongPost = async function (data:SimpleSong) {
@@ -19,4 +20,8 @@ export const createPreference = async function(data:Preference) {
 
 export const getPurchases = async function(){
     return await axios.get('/purchase')
+}
+
+export const loginService = async function (data:Login){
+    return axios.post('/login',data)
 }

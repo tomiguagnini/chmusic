@@ -49,6 +49,11 @@ export type Purchase ={
     User: User
 }
 
+export type Login = {
+  Email:string,
+  Password:string
+}
+
 export const columnsP: ColumnDef<Purchase>[] = [
     {
       accessorKey: "User.Email",
