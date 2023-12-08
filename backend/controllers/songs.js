@@ -45,8 +45,22 @@ const get_songs = async (req, res) => {
     }
 }
 
+
+const delete_song = async(req,res) => {
+    try{
+        const { id } = req.params
+        const song = await Song.findByPk(id)
+        await song.destroy()
+        res.status(200).json({message:'ok'})
+    }catch(error){
+        console.log(error)
+        res.status(500).json(error)
+    }
+}
+
 module.exports = {
     create_song,
     get_song_id,
-    get_songs
+    get_songs,
+    delete_song
 }

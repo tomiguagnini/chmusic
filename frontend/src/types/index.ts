@@ -1,4 +1,3 @@
-import { ColumnDef } from "@tanstack/react-table"
 
 export type INavLink = {
     imgURL: string;
@@ -49,41 +48,10 @@ export type Purchase ={
     User: User
 }
 
-export const columnsP: ColumnDef<Purchase>[] = [
-    {
-      accessorKey: "User.Email",
-      header: "Email",
-    },
-    {
-      accessorKey: "State",
-      header: "Estado",
-    },
-    {
-      accessorKey: "TotalPrice",
-      header: "Precio",
-    },
-    {
-      accessorKey: "Songs[0].Title",
-      header: "Beat",
-    },
-]
+export type Login = {
+  Email:string,
+  Password:string
+}
 
-export const columnsS: ColumnDef<Song>[] = [
-    {
-      accessorKey: "Title",
-      header: "Titulo",
-    },
-    {
-      accessorKey: "Artist",
-      header: "Artista",
-    },
-    {
-      accessorKey: "Price",
-      header: "Precio",
-    },
-    {
-      accessorKey: "Genre",
-      header: "Genero",
-    },
-    
-]
+
+

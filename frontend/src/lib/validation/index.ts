@@ -18,3 +18,8 @@ export const UserValidation = z.object({
     Phone: z.string().min(8),
     Dni:z.string().min(7)
 })
+
+export const LoginValidation = z.object({
+    Email: z.string(),
+    Password: z.string()
+})

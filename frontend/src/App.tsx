@@ -7,6 +7,8 @@ import Home from "./_root/pages/Home";
 import SongDetail from "./_root/pages/SongDetail";
 import Checkout from "./_root/pages/Checkout";
 import AllPurchases from "./_admin/pages/Purchases";
+import AuthLayout from "./_auth/AuthLayout";
+import SignIn from "./_auth/forms/SignIn";
 
 function App() {
     return (
@@ -20,6 +22,9 @@ function App() {
                 <Route index element={<Allsongs />} />
                 <Route path="upload-songs" element={<UploadSongs />} />
                 <Route path="all-purchases" element={<AllPurchases />} />
+            </Route>
+            <Route path="/auth" element={<AuthLayout/>}>
+                <Route index element={<SignIn/>}/>
             </Route>
         </Routes>
     );
