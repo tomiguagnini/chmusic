@@ -21,22 +21,27 @@ function MusicPlayer() {
     useEffect(() => {
         console.log(id);
         getSong(id)
-        .then((r) => setSong(r.data))
-        .catch((error)=> console.log(error))
+            .then((r) => setSong(r.data))
+            .catch((error) => console.log(error));
     }, [id]);
-
 
     return (
         <>
-            <div className="sm:w-3/5 h-screen w-full m-4">
-                <div className="flex justify-center h-4/5 pb-1 ">
+            <div className="sm:w-3/5 h-screen w-full p-4 flex flex-col gap-5 items-center">
+                <div className="">
                     <img
                         src={song?.Image}
                         alt={song?.Title}
-                        className="object-cover w-full"
+                        className="object-cover rounded-xl max-h-96"
                     />
                 </div>
-                <AudioPlayer src={song?.Listening} autoPlay />
+                <div className="w-full">
+                    <h2 className="text-2xl ">{song.Title}</h2>
+                    <p className="text-slate-500">{song.Artist}</p>
+                </div>
+                <div className="mt-auto mb-16 w-full">
+                    <AudioPlayer src={song?.Listening} className="music-player" />
+                </div>
             </div>
         </>
     );

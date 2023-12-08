@@ -283,4 +283,8 @@
   .shad-button_ghost {
     @apply flex gap-4 items-center justify-start hover:bg-transparent hover:text-white !important;
   }
+  .music-player {
+    background-color: #09090a;
+    border-radius: 30px;
+  }
 }
