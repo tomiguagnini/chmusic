@@ -13,7 +13,7 @@ const AdminLayout = () => {
     }, [isLogin, navigate]);
     return (
         <>
-            <div className="w-full md:flex">
+            <div className="w-full sm:flex">
                 <SidebarLeft />
 
                 <section className="flex flex-1 h-full">

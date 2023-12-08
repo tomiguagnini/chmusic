@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Song, columnsS } from "../../types";
+import { Song } from "../../types";
 import { getSongs } from "../../services";
 import { DataTable } from "@/components/shared/DataTable";
-
+import { columnsSong } from './ColumnSong'
 function SongsTable() {
     const [songs, setSongs] = useState<Array<Song>>([]);
     useEffect(() => {
@@ -12,7 +12,7 @@ function SongsTable() {
     }, []);
 
   return (
-    <DataTable columns={columnsS} data={songs}/>
+    <DataTable columns={columnsSong} data={songs}/>
   )
 }
 

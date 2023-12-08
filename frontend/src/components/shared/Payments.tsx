@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Purchase, columnsP } from "../../types";
+import { Purchase } from "../../types";
 import { getPurchases } from "../../services";
 import { DataTable } from "@/components/shared/DataTable";
+import { columnsPurchase } from "./ColumnPurchase";
 
 function Payments() {
     const [purchases, setPurchases] = useState<Array<Purchase>>([]);
@@ -11,7 +12,7 @@ function Payments() {
         .catch((error)=> console.log(error))
     }, []);
   return (
-    <DataTable columns={columnsP} data={purchases}/>
+    <DataTable columns={columnsPurchase} data={purchases}/>
   )
 }
 

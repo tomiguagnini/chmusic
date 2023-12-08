@@ -2,12 +2,12 @@ import axios from '../lib/axios'
 import { Login, Preference, SimpleSong} from '@/types';
 
 export const getSongs = async function(){
-    const token = localStorage.getItem('token')
-    return await axios.get('/songs',{headers:{'Authorization': token}})
+    return await axios.get('/songs')
 }
 
 export const createSongPost = async function (data:SimpleSong) {
-    return axios.post('/songs',data)
+    const token = localStorage.getItem('token')
+    return axios.post('/songs',data,{headers:{'Authorization': token}})
 }
 
 export const getSong = async function (id:string|undefined) {
@@ -19,9 +19,15 @@ export const createPreference = async function(data:Preference) {
 }
 
 export const getPurchases = async function(){
-    return await axios.get('/purchase')
+    const token = localStorage.getItem('token')
+    return await axios.get('/purchase',{headers:{'Authorization': token}})
 }
 
 export const loginService = async function (data:Login){
     return axios.post('/login',data)
+}
+
+export const deleteSong = async function (id:number){
+    const token = localStorage.getItem('token')
+    return axios.delete('/songs/'+ id,{headers:{'Authorization': token}})
 }

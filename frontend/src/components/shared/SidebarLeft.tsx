@@ -10,10 +10,10 @@ const SidebarLeft = () => {
     const {logout} = useAuth()
     
     return (
-        <nav className="leftsidebar">
-            <div className="flex flex-col gap-1 h-screen">
+        <nav className="bg-dark-3 px-6">
+            <div className="flex flex-col gap-1 sm:h-full">
 
-                <div className="flex items-center">
+                <div className="flex items-center mt-6">
                     <img
                         src={logo}
                         height={70}
@@ -25,7 +25,7 @@ const SidebarLeft = () => {
                     </Link>
                 </div>
                 
-                <ul className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-4 mt-9">
                     {sidebarLinks.map((link: INavLink) => {
                         const isActive = pathname === link.route;
                         return (
@@ -55,7 +55,7 @@ const SidebarLeft = () => {
                     })}
                 </ul>
                 
-                <div className="flex gap-2 mt-auto mb-20 cursor-pointer" onClick={()=> logout()}>
+                <div className="flex gap-2 mt-auto mb-3 cursor-pointer p-4" onClick={()=> logout()}>
                     <p className="text-red" >Logout</p>
                     <LogOut color="#B82C1D" />
                 </div>
