@@ -15,8 +15,14 @@ const createUser = async(data)=>{
 
 const create_user = async (req, res) => {
     try {
-        const user = await createUser(req.body);
-        res.json(user);
+        const { secret_key } = req.body
+        if (secret_key === secretKey){
+
+          const user = await createUser(req.body);
+          res.json(user);
+        }else{
+          res.sendStatus(401)
+        }
     } catch (error) {
         console.log(error);
         res.json(error);
@@ -46,7 +52,7 @@ const login = async (req, res) => {
       // Check if the user exists and the password is correct
       if (user && user.validPassword(Password)) {
         // Generate a JWT token
-        const token = jwt.sign({ id: user.id, email: user.email }, secretKey, {
+        const token = jwt.sign({ id: user.ID, email: user.Email }, secretKey, {
           expiresIn: '24h', // Set expiration time
         });
   
