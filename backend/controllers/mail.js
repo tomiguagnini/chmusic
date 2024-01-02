@@ -44,7 +44,7 @@ const sendEmailWithFile = async (items, user) => {
       </div>`;
 
       const mailOptions = {
-        from: "tomyguagnini@gmail.com",
+        from: mail_user,
         to: user.email,
         subject: "Compra de beats",
         html:html
