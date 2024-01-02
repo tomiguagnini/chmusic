@@ -28,18 +28,18 @@ function MusicPlayer() {
     return (
         <>
             <div className="sm:w-3/5 h-screen w-full p-4 flex flex-col gap-5 items-center">
-                <div className="">
+                <div className="mt-auto">
                     <img
                         src={song?.Image}
                         alt={song?.Title}
                         className="object-cover rounded-xl max-h-96"
                     />
                 </div>
-                <div className="w-full">
+                <div className="w-full mt-auto">
                     <h2 className="text-2xl ">{song.Title}</h2>
                     <p className="text-slate-500">{song.Artist}</p>
                 </div>
-                <div className="mt-auto mb-16 w-full">
+                <div className="mb-16 w-full">
                     <AudioPlayer src={song?.Listening} className="music-player" />
                 </div>
             </div>

@@ -4,6 +4,7 @@ const Song = require("../models/song");
 const User = require("../models/user");
 const { createUser } = require("../controllers/user");
 const { apiKey, clientUrl, app_host } = require("../config/variables");
+const { sendEmailWithFile } = require("./mail");
 
 mercadopago.configure({
     access_token: apiKey,
@@ -119,6 +120,12 @@ const webhook = async (req, res) => {
         if (payment.type === "payment") {
             const data = await mercadopago.payment.findById(payment["data.id"]);
             createPurchase(data);
+            if (data.body.status === 'approved'){
+                const items = data.body.additional_info.items;
+                const user = data.body.metadata.user;
+                console.log(user)
+                sendEmailWithFile(items,user)
+            }
         }
         res.sendStatus(200);
     } catch (error) {
