@@ -11,11 +11,19 @@ export const columnsPurchase: ColumnDef<Purchase>[] = [
       header: "Estado",
     },
     {
-      accessorKey: "TotalPrice",
+      id: "TotalPrice",
       header: "Precio",
+      cell: ({ row }) => {
+          const Purchase = row.original;
+          return `$ ${Purchase.TotalPrice}`;
+      },
     },
     {
-      accessorKey: "Songs[0].Title",
+      id: "beat",
       header: "Beat",
+      cell: ({ row }) => {
+          const Purchase = row.original;
+          return Purchase.Songs.map((e) => e.Title).join(", ");
+      },
     },
-]
+];

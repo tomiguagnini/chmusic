@@ -5,10 +5,10 @@ import Hero from "@/components/shared/Hero";
 
 const Home = () => {
     return (
-        <>
+        <div className="grid lg:grid-cols-2">
                 <Hero/>
                 <CardContainer />
-        </>
+        </div>
     );
 };
 

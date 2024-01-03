@@ -5,12 +5,10 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Song } from "@/types";
 import { deleteSong } from "@/services";
-
 export const columnsSong: ColumnDef<Song>[] = [
     {
         accessorKey: "Title",
@@ -23,6 +21,10 @@ export const columnsSong: ColumnDef<Song>[] = [
     {
         accessorKey: "Price",
         header: "Precio",
+        cell: ({row})=>{
+            const song = row.original
+            return `$ ${song.Price}`
+        }
     },
     {
         accessorKey: "Genre",
@@ -41,11 +43,10 @@ export const columnsSong: ColumnDef<Song>[] = [
                             <MoreHorizontal className="h-4 w-4" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
+                    <DropdownMenuContent align="end" className="bg-dark-1 text-white ">
+                        <DropdownMenuItem 
                             onClick={() => {
-                                if (window.confirm("desea eliminar?")){
+                                if (window.confirm("Esta seguro que desea eliminar este beat?")){
                                     deleteSong(song.ID)
                                     .then(console.log)
                                     .catch(console.log)

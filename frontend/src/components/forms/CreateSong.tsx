@@ -18,9 +18,11 @@ import { createSongPost } from "@/services";
 import { convertFilesToUrl } from "@/lib/utils";
 import { useState } from "react";
 import Spinner from "../shared/Spinner";
+import { useToast } from "../ui/use-toast";
 
 const CreateSong = () => {
     const [loading, setLoading] = useState(false);
+    const { toast } = useToast()
 
     const form = useForm<z.infer<typeof SongValidation>>({
         resolver: zodResolver(SongValidation),
@@ -41,10 +43,24 @@ const CreateSong = () => {
             const convertedData = await convertFilesToUrl(values);
             const response = await createSongPost(convertedData);
             setLoading(false);
-            console.log(response);
+            if (response.status === 201){
+                toast({
+                    description:"Cargado exitosamente"
+                })
+            }else{
+                toast({
+                    variant:'destructive',
+                    description:"Error al cargar"
+                })
+            }
+            form.reset()
         } catch (error) {
             console.log(error);
             setLoading(false);
+            toast({
+                variant:'destructive',
+                description:"Error al cargar"
+            })
         }
     }
     return (

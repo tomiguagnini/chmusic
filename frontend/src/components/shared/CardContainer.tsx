@@ -15,8 +15,8 @@ function CardContainer() {
         return <div>Error: No se pudo cargar la lista de canciones.</div>;
     }
     return (
-        <section className="flex flex-col">
-        <h2 className="text-5xl my-16 mx-3 font-bold">Todos los beats</h2>
+        <section className="flex flex-col lg:col-span-2">
+        <h2 className="text-4xl my-16 mx-3">Todos los beats</h2>
         <div className="flex gap-15 flex-wrap justify-center w-full">
             {songs.map((s) => {
                 return <CardShop song={s} key={s.ID}></CardShop>;
