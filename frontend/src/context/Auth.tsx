@@ -15,16 +15,16 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(localStorage.getItem('token') || null);
+  const [token, setToken] = useState<string | null>(sessionStorage.getItem('token') || null);
 
   const login = (newToken: string) => {
     setToken(newToken);
-    localStorage.setItem('token', newToken);
+    sessionStorage.setItem('token', newToken);
   };
 
   const logout = () => {
     setToken(null);
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   };
 
   const getToken = () => {

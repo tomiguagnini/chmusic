@@ -6,7 +6,7 @@ export const getSongs = async function(){
 }
 
 export const createSongPost = async function (data:SimpleSong) {
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     return axios.post('/songs',data,{headers:{'Authorization': token}})
 }
 
@@ -19,7 +19,7 @@ export const createPreference = async function(data:Preference) {
 }
 
 export const getPurchases = async function(){
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     return await axios.get('/purchase',{headers:{'Authorization': token}})
 }
 
@@ -28,6 +28,6 @@ export const loginService = async function (data:Login){
 }
 
 export const deleteSong = async function (id:number){
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
     return axios.delete('/songs/'+ id,{headers:{'Authorization': token}})
 }

@@ -60,7 +60,7 @@ export default {
           'accordion-up': 'accordion-up 0.2s ease-out',
         },
         backgroundImage: {
-          'image-01': "url('./src/assets/image1.jpeg')",
+          'image-01': "url('/src/assets/image1.jpeg')",
           'image-02': "url('/src/assets/image2.png')",
         }
       },
