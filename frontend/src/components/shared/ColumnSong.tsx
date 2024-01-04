@@ -48,9 +48,13 @@ export const columnsSong: ColumnDef<Song>[] = [
                             onClick={() => {
                                 if (window.confirm("Esta seguro que desea eliminar este beat?")){
                                     deleteSong(song.ID)
-                                    .then(console.log)
-                                    .catch(console.log)
-                                    window.location.reload()
+                                    .then((e)=>{
+                                        console.log(e)
+                                        window.location.reload()
+                                    })
+                                    .catch((err)=>{
+                                        console.log(err)
+                                    })
                                 }
                             }}
                         >
