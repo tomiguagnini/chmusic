@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 const imagenUrl =
-    "https://firebasestorage.googleapis.com/v0/b/ch-music-5dd34.appspot.com/o/image%2Fimage0%20(1).png?alt=media&token=d9736562-c62a-4159-966a-59cfac865c80";
+    "https://firebasestorage.googleapis.com/v0/b/ch-music-5dd34.appspot.com/o/image%2Fimage0.png?alt=media&token=2768b637-53c8-4a43-a2b6-58efdb7ba2e2";
 
 const sendEmailWithFile = async (items, user) => {
     const songs = await Promise.all(
