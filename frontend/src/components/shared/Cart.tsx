@@ -13,7 +13,7 @@ import ItemsCartContainer from "./ItemsCartContainer";
 import { useCart } from "@/hooks/useCart";
 
 function Cart() {
-    const {cart} =useCart()
+    const {cart, getTotal} =useCart()
     return (
         <div>
             <Sheet>
@@ -36,6 +36,7 @@ function Cart() {
                     <SheetDescription>
                         <ItemsCartContainer />
                     </SheetDescription>
+                        <p className="text-xl text-end">Total: ${getTotal()} </p>
                     {cart.length > 0?
                     <Link to="/checkout">
                         <SheetTrigger className="w-full">

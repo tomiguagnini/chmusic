@@ -7,6 +7,7 @@ type CartContextType = {
     clearCart: () => void;
     cartContain: (song:Song) => boolean;
     removeToCart: (song:Song) => void;
+    getTotal: () => number;
   };
 
 export const CartContext = createContext<CartContextType| undefined>(undefined);
@@ -34,6 +35,9 @@ export function CartProvider({ children }:CartProviderProps) {
     const clearCart = () => {
         setCart([]);
     };
+    const getTotal = ()=>{
+        return cart.reduce((ac:number,s:Song)=> ac + Number(s.Price) , 0 )
+    }
     return (
         <CartContext.Provider
             value={{
@@ -41,7 +45,8 @@ export function CartProvider({ children }:CartProviderProps) {
                 addToCart,
                 clearCart,
                 cartContain,
-                removeToCart
+                removeToCart,
+                getTotal
             }}
         >
             {children}

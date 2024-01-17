@@ -16,35 +16,38 @@ import { useState } from "react";
 import Spinner from "../shared/Spinner";
 import { createPreference } from "@/services";
 import { useCart } from "@/hooks/useCart";
+import { Checkbox } from "@/components/ui/checkbox"
+
 
 function UserForm() {
     const [loading, setLoading] = useState(false);
-    const {cart} = useCart()
+    const { cart } = useCart();
+    const [ terms , setTerms ] = useState(false)
 
     const form = useForm<z.infer<typeof UserValidation>>({
         resolver: zodResolver(UserValidation),
-        defaultValues: {
-          
-        },
+        defaultValues: {},
     });
 
     async function onSubmit(values: z.infer<typeof UserValidation>) {
         try {
             setLoading(true);
             createPreference({
-                user:values,
-                items:cart
+                user: values,
+                items: cart,
             })
-            .then((response)=>{
-                window.location.href = response.data.url
-            })
-            .catch(error=> console.log(error))
+                .then((response) => {
+                    window.location.href = response.data.url;
+                })
+                .catch((error) => console.log(error));
             setLoading(false);
-            
         } catch (error) {
             console.log(error);
             setLoading(false);
         }
+    }
+    const onChangeTerms = ()=>{
+        setTerms(prevState => !prevState)
     }
     return (
         <>
@@ -66,7 +69,7 @@ function UserForm() {
                                         className="shad-input"
                                         {...field}
                                     />
-                                </FormControl> 
+                                </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -84,7 +87,7 @@ function UserForm() {
                                         {...field}
                                     />
                                 </FormControl>
-                            
+
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -102,7 +105,7 @@ function UserForm() {
                                         {...field}
                                     />
                                 </FormControl>
-                                
+
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -141,12 +144,25 @@ function UserForm() {
                             </FormItem>
                         )}
                     />
+                    <div className="flex gap-3 pt-4 items-baseline">
 
-                    <div className="flex justify-end">
-                        <Button type="submit" className=" bg-primary-500 w-full mt-4 hover:bg-primary-600">
+                <Checkbox
+                  checked={terms}
+                  onCheckedChange={onChangeTerms}
+                  />
+                <p>He leido y acepto los terminos y condiciones</p>
+                  </div>
+
+                    <div className="flex">
+                        <Button
+                            type="submit"
+                            className=" bg-primary-500 w-full mt-4 hover:bg-primary-600"
+                            disabled={!terms}
+                            >
                             Ir al Pago
                         </Button>
                     </div>
+                        
                 </form>
             </Form>
         </>

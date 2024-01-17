@@ -16,9 +16,9 @@ export const convertFilesToUrl = async(data: z.infer<typeof SongValidation>)=>{
   const {File , Image, Listening} = data
 
   const randomNumber = Math.floor(Math.random() * 999)
-  const fileUrl =await uploadFile(File[0],'audio/'+ File[0].name + ` - ${randomNumber}`)
-  const imageUrl =await uploadFile(Image[0],'image/'+ Image[0].name + ` - ${randomNumber}`)
-  const listeningUrl =await uploadFile(Listening[0],'listening/'+ Listening[0].name + ` - ${randomNumber}`)
+  const fileUrl =await uploadFile(File[0],'audio/'+  `${randomNumber} - `+ File[0].name)
+  const imageUrl =await uploadFile(Image[0],'image/'+  + `${randomNumber} - `+ Image[0].name)
+  const listeningUrl =await uploadFile(Listening[0],'listening/'+ `${randomNumber} - `+ Listening[0].name)
   
   
   

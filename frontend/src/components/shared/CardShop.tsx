@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useCart } from "@/hooks/useCart";
 import { ShoppingCart, Trash2 } from "lucide-react";
+import License from "./License";
 
 type CardShopProps = {
     song: Song;
@@ -19,7 +20,7 @@ type CardShopProps = {
 
 function CardShop({ song }: CardShopProps) {
     const { addToCart, removeToCart, cartContain } = useCart();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     return (
         <>
             <Card className="text-white w-64 m-5 bg-dark-3 border-dark-1 hover:bg-dark-4 duration-300">
@@ -37,24 +38,31 @@ function CardShop({ song }: CardShopProps) {
                         <p>${song.Price}</p>
                     </CardHeader>
                 </Link>
-                <CardFooter>
-                    <Button
-                        variant={"outline"}
-                        className=" border-primary-500 w-32 mr-1"
-                        onClick={()=>{
-                            addToCart(song)
-                            navigate('/checkout')
+                <CardFooter className="flex justify-between">
+                    <License
+                        song={song}
+                        onClick={() => {
+                            addToCart(song);
+                            navigate("/checkout");
                         }}
                     >
-                        Comprar
-                    </Button>
-                    {!cartContain(song) ? (
                         <Button
-                            className="bg-primary-500 hover:scale-[1.05] hover:bg-primary-600 ml-auto"
-                            onClick={() => addToCart(song)}
+                            variant={"outline"}
+                            className=" border-primary-500 w-32 mr-1"
                         >
-                            <ShoppingCart />
+                            Comprar
                         </Button>
+                    </License>
+                    {!cartContain(song) ? (
+                        <License 
+                            song={song}
+                            onClick={() => addToCart(song)}>
+                            <Button
+                                className="bg-primary-500 hover:scale-[1.05] hover:bg-primary-600 ml-auto"
+                            >
+                                <ShoppingCart />
+                            </Button>
+                        </License>
                     ) : (
                         <Button
                             onClick={() => removeToCart(song)}
