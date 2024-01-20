@@ -15,7 +15,7 @@ import {
     CardTitle,
   } from "@/components/ui/card"
 import { Button } from "../ui/button";
-import { BoomBox, Layers, Mic, Mic2, RadioTower, ShoppingCart, Video } from "lucide-react";
+import { BoomBox, Layers, Mic, Mic2, RadioTower, Video } from "lucide-react";
 import { Song } from "@/types";
 import {  MouseEventHandler, ReactNode } from "react";
 
