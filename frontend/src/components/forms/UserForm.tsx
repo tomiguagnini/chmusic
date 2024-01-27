@@ -16,13 +16,12 @@ import { useState } from "react";
 import Spinner from "../shared/Spinner";
 import { createPreference } from "@/services";
 import { useCart } from "@/hooks/useCart";
-import { Checkbox } from "@/components/ui/checkbox"
-
+import { Checkbox } from "@/components/ui/checkbox";
 
 function UserForm() {
     const [loading, setLoading] = useState(false);
     const { cart } = useCart();
-    const [ terms , setTerms ] = useState(false)
+    const [terms, setTerms] = useState(false);
 
     const form = useForm<z.infer<typeof UserValidation>>({
         resolver: zodResolver(UserValidation),
@@ -46,9 +45,9 @@ function UserForm() {
             setLoading(false);
         }
     }
-    const onChangeTerms = ()=>{
-        setTerms(prevState => !prevState)
-    }
+    const onChangeTerms = () => {
+        setTerms((prevState) => !prevState);
+    };
     return (
         <>
             {loading ? <Spinner /> : ""}
@@ -145,24 +144,22 @@ function UserForm() {
                         )}
                     />
                     <div className="flex gap-3 pt-4 items-baseline">
-
-                <Checkbox
-                  checked={terms}
-                  onCheckedChange={onChangeTerms}
-                  />
-                <p>He leido y acepto los terminos y condiciones</p>
-                  </div>
+                        <Checkbox
+                            checked={terms}
+                            onCheckedChange={onChangeTerms}
+                        />
+                        <p>He leido y acepto los terminos y condiciones</p>
+                    </div>
 
                     <div className="flex">
                         <Button
                             type="submit"
                             className=" bg-primary-500 w-full mt-4 hover:bg-primary-600"
                             disabled={!terms}
-                            >
+                        >
                             Ir al Pago
                         </Button>
                     </div>
-                        
                 </form>
             </Form>
         </>
