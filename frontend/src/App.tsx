@@ -9,9 +9,12 @@ import Checkout from "./_root/pages/Checkout";
 import AllPurchases from "./_admin/pages/Purchases";
 import AuthLayout from "./_auth/AuthLayout";
 import SignIn from "./_auth/forms/SignIn";
+import ScrollToTopOnPageChange from "./components/shared/ScrollToTopOnPageChange";
 
 function App() {
     return (
+        <>
+            <ScrollToTopOnPageChange/>
         <Routes>
             <Route element={<RootLayout />}>
                 <Route index element={<Home />} />
@@ -27,6 +30,7 @@ function App() {
                 <Route index element={<SignIn/>}/>
             </Route>
         </Routes>
+        </>
     );
 }
 

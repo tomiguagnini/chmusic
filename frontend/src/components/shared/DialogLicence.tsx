@@ -41,7 +41,7 @@ export default function DialogLicence() {
                     <DialogTitle className="text-2xl">Contrato de licencia</DialogTitle>
                 </DialogHeader>
                 <DialogDescription></DialogDescription>
-                <ScrollArea className="h-[600px]  rounded-md border p-4">
+                <ScrollArea className="h-[450px]  rounded-md border p-4">
                 {text}
                 </ScrollArea>
 
