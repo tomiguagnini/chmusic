@@ -45,7 +45,6 @@ export default function DialogLicence() {
                 {text}
                 </ScrollArea>
 
-                <a href={pdfUrl} className="flex gap-2"><span><Download/></span>Descargar</a>
             </DialogContent>
         </Dialog>
     );

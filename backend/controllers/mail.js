@@ -47,7 +47,13 @@ const sendEmailWithFile = async (items, user) => {
         from: mail_user,
         to: user.email,
         subject: "Compra de beats",
-        html:html
+        html:html,
+        attachments: [
+          {
+              filename: 'licencia de contrato.pdf',
+              path: '..\assets\licencia estandar.pdf' // Coloca la ruta de tu archivo adjunto aquí
+          }
+      ]
     };
     
     
