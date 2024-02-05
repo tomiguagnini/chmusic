@@ -62,7 +62,7 @@ function UserForm({terms}:useFormProps) {
                         name="FirstName"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Nombre</FormLabel>
+                                <FormLabel>Nombre <span className="text-red">*</span></FormLabel>
                                 <FormControl>
                                     <Input
                                         type="text"
@@ -79,7 +79,7 @@ function UserForm({terms}:useFormProps) {
                         name="LastName"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Apellido</FormLabel>
+                                <FormLabel>Apellido<span className="text-red">*</span></FormLabel>
                                 <FormControl>
                                     <Input
                                         type="text"
@@ -97,7 +97,7 @@ function UserForm({terms}:useFormProps) {
                         name="Email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel>Email<span className="text-red">*</span></FormLabel>
                                 <FormControl>
                                     <Input
                                         type="email"
@@ -115,7 +115,7 @@ function UserForm({terms}:useFormProps) {
                         name="Phone"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Telefono</FormLabel>
+                                <FormLabel>Telefono<span className="text-red">*</span></FormLabel>
                                 <FormControl>
                                     <Input
                                         type="number"
@@ -132,7 +132,7 @@ function UserForm({terms}:useFormProps) {
                         name="Dni"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Dni</FormLabel>
+                                <FormLabel>Dni<span className="text-red">*</span></FormLabel>
                                 <FormControl>
                                     <Input
                                         type="number"
