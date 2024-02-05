@@ -51,7 +51,7 @@ const sendEmailWithFile = async (items, user) => {
         attachments: [
           {
               filename: 'licencia de contrato.pdf',
-              path: '..\assets\licencia estandar.pdf' // Coloca la ruta de tu archivo adjunto aquí
+              path: './assets/licencia estandar.pdf' // Coloca la ruta de tu archivo adjunto aquí
           }
       ]
     };
